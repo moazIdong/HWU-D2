@@ -11,6 +11,7 @@ public class EventManager : MonoBehaviour
     public static UnityEvent OnGameWin;
     public static UnityEvent<ContinentEnum,UpgradeEnum> OnUpgrade;
     public static UnityEvent<ContinentEnum, UpgradeEnum> OnDowngrade;
+    public static UnityEvent<int> OnRewardTick;
 
     void Awake()
     {
@@ -35,6 +36,10 @@ public class EventManager : MonoBehaviour
         if (OnDowngrade== null)
         {
             OnDowngrade = new UnityEvent<ContinentEnum, UpgradeEnum>();
+        }
+        if (OnRewardTick == null)
+        {
+            OnRewardTick = new UnityEvent<int>();
         }
     }
     /* How to use this event Manager

@@ -8,14 +8,16 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]private ContinentsRefrence[] Refrence;
     [SerializeField]private int countdownTime; //Countdown time in seconds
-    [SerializeField]private GameObject GameWonMenu;
-    [SerializeField]private GameObject GameLoseMenu;
+    [SerializeField]private GameWonMenu GameWonMenu;
+    [SerializeField]private GameOverMenu GameLoseMenu;
+    private PointsHandeler pointHandeler;
 
     // Start is called before the first frame update
     void Start()
     {
-        GameWonMenu.SetActive(false);
-        GameLoseMenu.SetActive(false);
+        pointHandeler = GetComponent<PointsHandeler>();
+        GameWonMenu.gameObject.SetActive(false);
+        GameLoseMenu.gameObject.SetActive(false);
         EventManager.OnGameOver.AddListener(OnGameOver);
         GameStart();
     }
@@ -28,7 +30,8 @@ public class GameManager : MonoBehaviour
 
     private void GameWin()
     {
-        GameWonMenu.SetActive(true);
+        GameWonMenu.UpdateText(pointHandeler.GamePoints);
+        GameWonMenu.gameObject.SetActive(true);
         print("Game Won");
     }
 
@@ -38,6 +41,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(WaitAndGameOver(continentName, temperatureValue));
         Continent losingContinent = FindContinentClassByEnum(continentName);
         losingContinent.LosingTempEffect();
+        losingContinent.LosingNameEffect();
     }
 
     public Continent FindContinentClassByEnum(ContinentEnum continentName)
@@ -55,8 +59,8 @@ public class GameManager : MonoBehaviour
         // suspend execution for 2 seconds
         yield return new WaitForSeconds(2);
         print("GameOver Screen: " + Time.time);
-        GameLoseMenu.SetActive(true);
-        GameLoseMenu.GetComponent<GameOverMenu>().UpdateText(continentName.ToString(), temperatureValue.ToString());
+        GameLoseMenu.gameObject.SetActive(true);
+        GameLoseMenu.UpdateText(continentName.ToString(), temperatureValue.ToString());
     }
     // Update is called once per frame
     void Update()

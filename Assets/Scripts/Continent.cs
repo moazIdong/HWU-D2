@@ -12,14 +12,25 @@ namespace logic
         public ContinentEnum continent;
         [SerializeField]private TextMeshProUGUI temperatureCounter;
         [SerializeField]private TextMeshProUGUI continentName;
-        [SerializeField]private Temperature temperature;
-        [SerializeField]private IconHandeler iconHandeler;
         [SerializeField]private TemperatureColorCode colorCode;
+        private Temperature temperature;
+        private RewardSystem rewardSystem;
+        private IconHandeler iconHandeler;
         private Dictionary<UpgradeEnum, int> continentUpgrades = new Dictionary<UpgradeEnum, int>();
 
         float timer = 0;
         float waitTime = 1;
 
+        // Start is called before the first frame update
+        void Start()
+        {
+            iconHandeler = GetComponentInChildren<IconHandeler>();
+            rewardSystem = GetComponent<RewardSystem>();
+            rewardSystem.SetContinent(continent);
+            temperature = GetComponent<Temperature>();
+            temperature.SetContinent(continent);
+            temperatureCounter.text = temperature.current_temperature.ToString() + " °C"; //converts the current_temperature variable from float to string
+        }
         internal void LosingTempEffect()
         {
             temperatureCounter.fontStyle = FontStyles.Bold;
@@ -69,13 +80,6 @@ namespace logic
             }
         }
 
-        // Start is called before the first frame update
-        void Start()
-        {
-            iconHandeler = GetComponentInChildren<IconHandeler>();
-            temperature.SetContinent(continent);
-            temperatureCounter.text = temperature.current_temperature.ToString(); //converts the current_temperature variable from float to string
-        }
 
         // Update is called once per frame
         void Update()
@@ -86,12 +90,10 @@ namespace logic
             if (timer > waitTime)
             {
                 timer = timer - waitTime;//Remove the recorded 1 seconds.
-                temperatureCounter.text = ((int)temperature.current_temperature).ToString(); //updates the temperature counter
+                temperatureCounter.text = ((int)temperature.current_temperature).ToString() + " °C"; //updates the temperature counter
                 ColorContinent();
             }
         }
-
-        
 
         private void ColorContinent()
         {
@@ -104,18 +106,16 @@ namespace logic
              [] currentTemperature = (25-20)/4  ((current Temperature-Low Temperature)/TemperatureStep)
             _________________________________________________________________________________
 
-            20-24 Green
-            25-28 Yellow
-            29-32 Light Orange
-            33-36 Orange
-            37-40 Red
+            20-24 Green 10
+            25-28 Yellow 8 
+            29-32 Light Orange 6
+            33-36 Orange 4 
+            37-40 Red 2
             */
-            
-            int lowMaxDiffrence = temperature.MAX_TEMPERATURE - temperature.LOW_TEMPERATURE;
-            int temperatureStep = lowMaxDiffrence / colorCode.GetColorCodesCount(); //calculates the rate of temperature value which the game uses to switch color code of the country
-            int colorIndex = (((int)temperature.current_temperature) - temperature.LOW_TEMPERATURE)/temperatureStep; //mentions which index to use in colorCodes array
+
+            int temperatureIndex = temperature.GetCurrentTemperatureIndex();
             //print(colorIndex + " Temp :" + temperature.current_temperature); 
-            gameObject.GetComponent<SpriteRenderer>().color = colorCode.GetColor(colorIndex);
+            gameObject.GetComponent<SpriteRenderer>().color = colorCode.GetColor(temperatureIndex); //changes color of continent
 
         }
         public Temperature GetTemperatureInstance()

@@ -13,12 +13,13 @@ namespace logic
         [SerializeField]internal int MAX_TEMPERATURE = 40;
         [SerializeField]int TIME_TO_LOSE = 45;
 
-        bool isGameOver = false;
+        bool isGameOver = false; //note
         float timer = 0;
         float waitTime = 1;
         internal float current_temperature;
         internal float temperature_per_sec;
         float temperature_update;
+        int temperature_levels = 5;
         ContinentEnum continentName;
 
         internal void SetContinent(ContinentEnum continent)
@@ -47,15 +48,22 @@ namespace logic
             EventManager.OnGameOver.AddListener(OnGameOver);
         }
 
-        private void OnGameOver(ContinentEnum contient, int temperatureValue)
+        private void OnGameOver(ContinentEnum contient, int temperatureValue) //note
         {
             isGameOver = true;
+        }
+        public int GetCurrentTemperatureIndex()
+        {
+            int lowMaxDiffrence = MAX_TEMPERATURE - LOW_TEMPERATURE;
+            int temperatureStep = lowMaxDiffrence / temperature_levels; //calculates the rate of temperature value which the game uses to switch color code of the country
+            int temperatureIndex = (((int)current_temperature) - LOW_TEMPERATURE) / temperatureStep; //mentions which index to use in colorCodes array
+            return temperatureIndex;
         }
 
         //Update is called once per frame
         void Update()
         {
-            if (isGameOver == true)
+            if (isGameOver == true) //note
             {
                 return;
             }
@@ -74,11 +82,18 @@ namespace logic
                 {
                     current_temperature += temperature_per_sec;
                     current_temperature -= temperature_update; //current_temperature = current_temperature - temperature_update
+                    CheckCurrentTemperatureBoundaries();
                 }
             }
             timer += Time.deltaTime; //updates the game time
         }
 
-        
+        private void CheckCurrentTemperatureBoundaries()
+        {
+            if (current_temperature < LOW_TEMPERATURE)
+            {
+                current_temperature = LOW_TEMPERATURE;
+            }
+        }
     }
 }

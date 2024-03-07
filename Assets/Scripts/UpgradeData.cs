@@ -8,6 +8,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/UpgradePerContinent", order = 1)]
 public class UpgradeData : ScriptableObject
 {
+    public int StartingGamePoints = 1000;
 
     public ContinentsRefrence[] ContinentUpgradeValues;
     // Start is called before the first frame update
@@ -25,6 +26,7 @@ public class UpgradeData : ScriptableObject
     {
         public ContinentEnum ContEnum;
         public UpgradeDetails[] UpgDetails;
+        public int[] Rewards;
         //My Natural/Renewable Upgrade Data
     }
     [Serializable]public struct UpgradeDetails
@@ -36,5 +38,6 @@ public class UpgradeData : ScriptableObject
         public int UpgradeCost;
         public int UpgradeRefund;
     }
+
 
 }

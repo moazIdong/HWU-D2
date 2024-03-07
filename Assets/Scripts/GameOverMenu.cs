@@ -11,7 +11,7 @@ public class GameOverMenu : MonoBehaviour
     public void UpdateText(string continent, string temperature)
     {
         continentDetails.text = continent;
-        temperatureDetails.text = temperature;
+        temperatureDetails.text = temperature + " °C";
     }
 
     // Update is called once per frame

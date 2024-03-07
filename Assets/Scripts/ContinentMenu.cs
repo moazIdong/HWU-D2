@@ -46,48 +46,45 @@ public class ContinentMenu : MonoBehaviour
     public void SolarPanel()
     {
         UpgradeButtons buttonInfo = Array.Find(upgradeButtons, x => x.UpgEnum == UpgradeEnum.SolarPanel);
-        if (buttonInfo.ButtonState)
-        {
-            buttonInfo.ButtonState = false;
-            buttonInfo.CurrentButton.GetComponent<Image>().color = Color.red;
-            EventManager.OnUpgrade.Invoke(CurrentContinent,UpgradeEnum.SolarPanel);
-        }
-        else
-        {
-            buttonInfo.ButtonState = true;
-            buttonInfo.CurrentButton.GetComponent<Image>().color = Color.white;
-            EventManager.OnDowngrade.Invoke(CurrentContinent, UpgradeEnum.SolarPanel);
-        }
+        handleButtonState(buttonInfo, UpgradeEnum.SolarPanel);
         HideAllMenus();
     }
+
+
     public void HydroDam()
     {
-        EventManager.OnUpgrade.Invoke(CurrentContinent, UpgradeEnum.HydroDam);
+        UpgradeButtons buttonInfo = Array.Find(upgradeButtons, x => x.UpgEnum == UpgradeEnum.HydroDam);
+        handleButtonState(buttonInfo, UpgradeEnum.HydroDam);
         HideAllMenus();
     }
     public void WindTurbine()
     {
-        EventManager.OnUpgrade.Invoke(CurrentContinent, UpgradeEnum.WindTurbine);
+        UpgradeButtons buttonInfo = Array.Find(upgradeButtons, x => x.UpgEnum == UpgradeEnum.WindTurbine);
+        handleButtonState(buttonInfo, UpgradeEnum.WindTurbine);
         HideAllMenus();
     }
     public void WasteManagment()
     {
-        EventManager.OnUpgrade.Invoke(CurrentContinent, UpgradeEnum.WasteManagment);
+        UpgradeButtons buttonInfo = Array.Find(upgradeButtons, x => x.UpgEnum == UpgradeEnum.WasteManagment);
+        handleButtonState(buttonInfo, UpgradeEnum.WasteManagment);
         HideAllMenus();
     }
     public void CarbonCapture()
     {
-        EventManager.OnUpgrade.Invoke(CurrentContinent, UpgradeEnum.CarbonCapture);
+        UpgradeButtons buttonInfo = Array.Find(upgradeButtons, x => x.UpgEnum == UpgradeEnum.CarbonCapture);
+        handleButtonState(buttonInfo, UpgradeEnum.CarbonCapture);
         HideAllMenus();
     }
     public void Afforestation()
     {
-        EventManager.OnUpgrade.Invoke(CurrentContinent, UpgradeEnum.Afforestation);
+        UpgradeButtons buttonInfo = Array.Find(upgradeButtons, x => x.UpgEnum == UpgradeEnum.Afforestation);
+        handleButtonState(buttonInfo, UpgradeEnum.Afforestation);
         HideAllMenus();
     }
     public void GreenUrbanPlanning()
     {
-        EventManager.OnUpgrade.Invoke(CurrentContinent, UpgradeEnum.GreenUrbanPlanning);
+        UpgradeButtons buttonInfo = Array.Find(upgradeButtons, x => x.UpgEnum == UpgradeEnum.GreenUrbanPlanning);
+        handleButtonState(buttonInfo, UpgradeEnum.GreenUrbanPlanning);
         HideAllMenus();
     }
 
@@ -104,5 +101,20 @@ public class ContinentMenu : MonoBehaviour
         public Button CurrentButton;
         public bool ButtonState; //true -> Upgrade \ False -> Downgrade
         //My Natural/Renewable Upgrade Data
+    }
+    private void handleButtonState(UpgradeButtons buttonInfo, UpgradeEnum upgradeEnum)
+    {
+        if (buttonInfo.ButtonState)
+        {
+            buttonInfo.ButtonState = false;
+            buttonInfo.CurrentButton.GetComponent<Image>().color = Color.red;
+            EventManager.OnUpgrade.Invoke(CurrentContinent, upgradeEnum);
+        }
+        else
+        {
+            buttonInfo.ButtonState = true;
+            buttonInfo.CurrentButton.GetComponent<Image>().color = Color.white;
+            EventManager.OnDowngrade.Invoke(CurrentContinent, upgradeEnum);
+        }
     }
 }
