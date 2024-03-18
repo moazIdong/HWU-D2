@@ -17,270 +17,270 @@ MonoBehaviour:
   - ContEnum: 0
     UpgDetails:
     - UpgradeOption: 0
-      TemperatureEffectValue: 3
+      TemperatureEffectValue: 0.36
       UpdateTimeToLoseValue: 0
       MaxAllowedUpgrade: 1
       UpgradeCost: 50
       UpgradeRefund: 25
     - UpgradeOption: 1
-      TemperatureEffectValue: 2
+      TemperatureEffectValue: 0.22
       UpdateTimeToLoseValue: 0
       MaxAllowedUpgrade: 1
-      UpgradeCost: 0
-      UpgradeRefund: 0
+      UpgradeCost: 50
+      UpgradeRefund: 25
     - UpgradeOption: 2
-      TemperatureEffectValue: 0.5
+      TemperatureEffectValue: 0.17
       UpdateTimeToLoseValue: 0
       MaxAllowedUpgrade: 1
-      UpgradeCost: 0
-      UpgradeRefund: 0
+      UpgradeCost: 50
+      UpgradeRefund: 25
     - UpgradeOption: 3
       TemperatureEffectValue: 0
       UpdateTimeToLoseValue: 10
       MaxAllowedUpgrade: 1
-      UpgradeCost: 0
-      UpgradeRefund: 0
+      UpgradeCost: 20
+      UpgradeRefund: 15
     - UpgradeOption: 4
       TemperatureEffectValue: 0
       UpdateTimeToLoseValue: 45
       MaxAllowedUpgrade: 1
-      UpgradeCost: 0
-      UpgradeRefund: 0
+      UpgradeCost: 20
+      UpgradeRefund: 15
     - UpgradeOption: 5
       TemperatureEffectValue: 0
       UpdateTimeToLoseValue: 60
       MaxAllowedUpgrade: 1
-      UpgradeCost: 0
-      UpgradeRefund: 0
+      UpgradeCost: 20
+      UpgradeRefund: 15
     - UpgradeOption: 6
       TemperatureEffectValue: 0
       UpdateTimeToLoseValue: 25
       MaxAllowedUpgrade: 1
-      UpgradeCost: 0
-      UpgradeRefund: 0
+      UpgradeCost: 20
+      UpgradeRefund: 15
     Rewards: 0a00000008000000060000000400000002000000
   - ContEnum: 1
     UpgDetails:
     - UpgradeOption: 0
-      TemperatureEffectValue: 0
+      TemperatureEffectValue: 0.27
       UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 50
+      UpgradeRefund: 25
     - UpgradeOption: 1
-      TemperatureEffectValue: 0
+      TemperatureEffectValue: 0.05
       UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 50
+      UpgradeRefund: 25
     - UpgradeOption: 2
-      TemperatureEffectValue: 0
+      TemperatureEffectValue: 0.12
       UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 50
+      UpgradeRefund: 25
     - UpgradeOption: 3
       TemperatureEffectValue: 0
-      UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
+      UpdateTimeToLoseValue: 10
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 20
+      UpgradeRefund: 15
     - UpgradeOption: 4
       TemperatureEffectValue: 0
-      UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
+      UpdateTimeToLoseValue: 25
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 20
+      UpgradeRefund: 15
     - UpgradeOption: 5
       TemperatureEffectValue: 0
-      UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
+      UpdateTimeToLoseValue: 45
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 20
+      UpgradeRefund: 15
     - UpgradeOption: 6
       TemperatureEffectValue: 0
-      UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
+      UpdateTimeToLoseValue: 60
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 20
+      UpgradeRefund: 15
     Rewards: 0a00000008000000060000000400000002000000
   - ContEnum: 2
     UpgDetails:
     - UpgradeOption: 0
-      TemperatureEffectValue: 0
+      TemperatureEffectValue: 0.26
       UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 50
+      UpgradeRefund: 25
     - UpgradeOption: 1
-      TemperatureEffectValue: 0
+      TemperatureEffectValue: 0.06
       UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 50
+      UpgradeRefund: 25
     - UpgradeOption: 2
-      TemperatureEffectValue: 0
+      TemperatureEffectValue: 0.2
       UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 50
+      UpgradeRefund: 25
     - UpgradeOption: 3
       TemperatureEffectValue: 0
-      UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
+      UpdateTimeToLoseValue: 10
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 20
+      UpgradeRefund: 15
     - UpgradeOption: 4
       TemperatureEffectValue: 0
-      UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
+      UpdateTimeToLoseValue: 45
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 20
+      UpgradeRefund: 15
     - UpgradeOption: 5
       TemperatureEffectValue: 0
-      UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
+      UpdateTimeToLoseValue: 60
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 20
+      UpgradeRefund: 15
     - UpgradeOption: 6
       TemperatureEffectValue: 0
-      UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
-    Rewards: 0a00000008000000060000000400000002000000
-  - ContEnum: 3
-    UpgDetails:
-    - UpgradeOption: 0
-      TemperatureEffectValue: 0
-      UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
-    - UpgradeOption: 1
-      TemperatureEffectValue: 0
-      UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
-    - UpgradeOption: 2
-      TemperatureEffectValue: 0
-      UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
-    - UpgradeOption: 3
-      TemperatureEffectValue: 0
-      UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
-    - UpgradeOption: 4
-      TemperatureEffectValue: 0
-      UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
-    - UpgradeOption: 5
-      TemperatureEffectValue: 0
-      UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
-    - UpgradeOption: 6
-      TemperatureEffectValue: 0
-      UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
-    Rewards: 0a00000008000000060000000400000002000000
-  - ContEnum: 4
-    UpgDetails:
-    - UpgradeOption: 0
-      TemperatureEffectValue: 0
-      UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
-    - UpgradeOption: 1
-      TemperatureEffectValue: 0
-      UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
-    - UpgradeOption: 2
-      TemperatureEffectValue: 0
-      UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
-    - UpgradeOption: 3
-      TemperatureEffectValue: 0
-      UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
-    - UpgradeOption: 4
-      TemperatureEffectValue: 0
-      UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
-    - UpgradeOption: 5
-      TemperatureEffectValue: 0
-      UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
-    - UpgradeOption: 6
-      TemperatureEffectValue: 0
-      UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
+      UpdateTimeToLoseValue: 25
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 20
+      UpgradeRefund: 15
     Rewards: 0a00000008000000060000000400000002000000
   - ContEnum: 5
     UpgDetails:
     - UpgradeOption: 0
-      TemperatureEffectValue: 0
+      TemperatureEffectValue: 0.24
       UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 50
+      UpgradeRefund: 25
     - UpgradeOption: 1
-      TemperatureEffectValue: 0
+      TemperatureEffectValue: 0.06
       UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 50
+      UpgradeRefund: 25
     - UpgradeOption: 2
-      TemperatureEffectValue: 0
+      TemperatureEffectValue: 0.22
       UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 50
+      UpgradeRefund: 25
     - UpgradeOption: 3
       TemperatureEffectValue: 0
-      UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
+      UpdateTimeToLoseValue: 10
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 20
+      UpgradeRefund: 15
     - UpgradeOption: 4
       TemperatureEffectValue: 0
-      UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
+      UpdateTimeToLoseValue: 25
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 20
+      UpgradeRefund: 15
     - UpgradeOption: 5
       TemperatureEffectValue: 0
-      UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
+      UpdateTimeToLoseValue: 60
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 20
+      UpgradeRefund: 15
     - UpgradeOption: 6
       TemperatureEffectValue: 0
+      UpdateTimeToLoseValue: 45
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 20
+      UpgradeRefund: 15
+    Rewards: 0a00000008000000060000000400000002000000
+  - ContEnum: 4
+    UpgDetails:
+    - UpgradeOption: 0
+      TemperatureEffectValue: 0.14
       UpdateTimeToLoseValue: 0
-      MaxAllowedUpgrade: 0
-      UpgradeCost: 0
-      UpgradeRefund: 0
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 50
+      UpgradeRefund: 25
+    - UpgradeOption: 1
+      TemperatureEffectValue: 0.02
+      UpdateTimeToLoseValue: 0
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 50
+      UpgradeRefund: 25
+    - UpgradeOption: 2
+      TemperatureEffectValue: 0.8
+      UpdateTimeToLoseValue: 0
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 50
+      UpgradeRefund: 25
+    - UpgradeOption: 3
+      TemperatureEffectValue: 0
+      UpdateTimeToLoseValue: 10
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 20
+      UpgradeRefund: 15
+    - UpgradeOption: 4
+      TemperatureEffectValue: 0
+      UpdateTimeToLoseValue: 25
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 20
+      UpgradeRefund: 15
+    - UpgradeOption: 5
+      TemperatureEffectValue: 0
+      UpdateTimeToLoseValue: 45
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 20
+      UpgradeRefund: 15
+    - UpgradeOption: 6
+      TemperatureEffectValue: 0
+      UpdateTimeToLoseValue: 60
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 20
+      UpgradeRefund: 15
+    Rewards: 0a00000008000000060000000400000002000000
+  - ContEnum: 3
+    UpgDetails:
+    - UpgradeOption: 0
+      TemperatureEffectValue: 0.38
+      UpdateTimeToLoseValue: 0
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 50
+      UpgradeRefund: 25
+    - UpgradeOption: 1
+      TemperatureEffectValue: 0.1
+      UpdateTimeToLoseValue: 0
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 50
+      UpgradeRefund: 25
+    - UpgradeOption: 2
+      TemperatureEffectValue: 0.22
+      UpdateTimeToLoseValue: 0
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 50
+      UpgradeRefund: 25
+    - UpgradeOption: 3
+      TemperatureEffectValue: 0
+      UpdateTimeToLoseValue: 10
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 20
+      UpgradeRefund: 15
+    - UpgradeOption: 4
+      TemperatureEffectValue: 0
+      UpdateTimeToLoseValue: 25
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 20
+      UpgradeRefund: 15
+    - UpgradeOption: 5
+      TemperatureEffectValue: 0
+      UpdateTimeToLoseValue: 45
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 20
+      UpgradeRefund: 15
+    - UpgradeOption: 6
+      TemperatureEffectValue: 0
+      UpdateTimeToLoseValue: 60
+      MaxAllowedUpgrade: 1
+      UpgradeCost: 20
+      UpgradeRefund: 15
     Rewards: 0a00000008000000060000000400000002000000

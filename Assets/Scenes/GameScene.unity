@@ -8525,7 +8525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LOW_TEMPERATURE: -1
   MAX_TEMPERATURE: 40
-  TIME_TO_LOSE: 5
+  TIME_TO_LOSE: 90
 --- !u!114 &1808119944
 MonoBehaviour:
   m_ObjectHideFlags: 0
