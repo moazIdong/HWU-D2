@@ -10,6 +10,7 @@ namespace logic
     {
         [SerializeField] private UpgradeData upgradeData;
         [SerializeField] private GameManager gameManager;
+        [SerializeField] private PointsHandeler pointHandler;
         // Start is called before the first frame update
         void Start()
         {
@@ -24,18 +25,25 @@ namespace logic
         }
         private void OnUpgrade(ContinentEnum currentContinent , UpgradeEnum upgradeOption)
         {
+
             UpgradeData.UpgradeDetails[] allOptionDetails = Array.Find(upgradeData.ContinentUpgradeValues, x => x.ContEnum == currentContinent).UpgDetails;
             UpgradeData.UpgradeDetails optionDetails = Array.Find(allOptionDetails, x => x.UpgradeOption == upgradeOption);
             print("Current Continent : " + currentContinent + "Current Upgrade : " + upgradeOption);
+            if (pointHandler.GamePoints < optionDetails.UpgradeCost)
+            {
+                return;
+            }
+
             //TODO : send event to UI to draw an Icon
             //TODO : send event to Temperature to update the temperature Value (due to applied Upgrade effect)
             Continent continent = gameManager.FindContinentClassByEnum(currentContinent);
-
+            
             if(continent.GetContinetUpgradesCount(upgradeOption) < optionDetails.MaxAllowedUpgrade)
             {
+                pointHandler.OnUpgrade(currentContinent, upgradeOption);    
                 continent.UpdateContinetUpgrades(upgradeOption);
                 Temperature temperature = continent.GetTemperatureInstance();
-                temperature.SetTemperatureUpdate(optionDetails.TemperatureEffectValue);
+                temperature.SetTemperatureUpdate(optionDetails.TemperatureEffectValue, optionDetails.UpdateTimeToLoseValue);
                 continent.GetIconHandelerInstance().UpdateIconStatus(upgradeOption , true);
             } 
             else
@@ -56,9 +64,10 @@ namespace logic
 
             if (continent.GetContinetUpgradesCount(upgradeOption) > 0)
             {
+                pointHandler.OnDowngrade(currentContinent, upgradeOption);
                 continent.UpdateContinetDowngrades(upgradeOption);
                 Temperature temperature = continent.GetTemperatureInstance();
-                temperature.UnSetTemperatureUpdate(optionDetails.TemperatureEffectValue);
+                temperature.UnSetTemperatureUpdate(optionDetails.TemperatureEffectValue, optionDetails.UpdateTimeToLoseValue);
                 continent.GetIconHandelerInstance().UpdateIconStatus(upgradeOption , false);
             }
             else

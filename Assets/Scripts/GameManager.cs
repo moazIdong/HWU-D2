@@ -62,11 +62,7 @@ public class GameManager : MonoBehaviour
         GameLoseMenu.gameObject.SetActive(true);
         GameLoseMenu.UpdateText(continentName.ToString(), temperatureValue.ToString());
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
 [Serializable] public struct ContinentsRefrence
 {

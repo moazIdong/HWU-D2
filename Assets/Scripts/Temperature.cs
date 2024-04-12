@@ -13,7 +13,7 @@ namespace logic
         [SerializeField]internal int MAX_TEMPERATURE = 40;
         [SerializeField]int TIME_TO_LOSE = 45;
 
-        bool isGameOver = false; //note
+        bool isGameTimerStop = false; //note
         float timer = 0;
         float waitTime = 1;
         internal float current_temperature;
@@ -22,36 +22,57 @@ namespace logic
         int temperature_levels = 5;
         ContinentEnum continentName;
 
-        internal void SetContinent(ContinentEnum continent)
-        {
-            continentName = continent;
-        }
-        public void UnSetTemperatureUpdate(float optionTemperature)
-        {
-            temperature_update -= optionTemperature;
-        }
-        public void SetTemperatureUpdate(float optionTemperature)
-        {
-            temperature_update += optionTemperature;
-        }
-
-
         //Start is called before the first frame update
         void Awake()
         {
             current_temperature = LOW_TEMPERATURE; //initialize the starting temperature
             temperature_per_sec = (float)(MAX_TEMPERATURE - LOW_TEMPERATURE) / TIME_TO_LOSE; //Equation to calculate increase in temperature per 
+            print("TEMPERATURE : " + temperature_per_sec + " CONTINENT : " + continentName);
             temperature_update = 0;
         }
         void Start()
         {
             EventManager.OnGameOver.AddListener(OnGameOver);
+            EventManager.OnGameWin.AddListener(OnGameWon);
+        }
+
+        internal void SetContinent(ContinentEnum continent)
+        {
+            continentName = continent;
+        }
+        public void UnSetTemperatureUpdate(float optionTemperature, int optionTimeToLose)
+        {
+            temperature_update -= optionTemperature;
+            if (optionTimeToLose > 0)
+            {
+                TIME_TO_LOSE -= optionTimeToLose;
+                temperature_per_sec = (float)(MAX_TEMPERATURE - LOW_TEMPERATURE) / TIME_TO_LOSE; //Equation to calculate increase in temperature per 
+                print("TEMPERATURE : " + temperature_per_sec + " CONTINENT : " + continentName);
+            }
+        }
+        public void SetTemperatureUpdate(float optionTemperature, int optionTimeToLose)
+        {
+            temperature_update += optionTemperature;
+            if (optionTimeToLose > 0)
+            {
+                TIME_TO_LOSE += optionTimeToLose;
+                temperature_per_sec = (float)(MAX_TEMPERATURE - LOW_TEMPERATURE) / TIME_TO_LOSE; //Equation to calculate increase in temperature per 
+                print("TEMPERATURE : " + temperature_per_sec + " CONTINENT : " + continentName);
+            }
+            
+        }
+
+
+        private void OnGameWon()
+        {
+            isGameTimerStop = true;
         }
 
         private void OnGameOver(ContinentEnum contient, int temperatureValue) //note
         {
-            isGameOver = true;
+            isGameTimerStop = true;
         }
+
         public int GetCurrentTemperatureIndex()
         {
             int lowMaxDiffrence = MAX_TEMPERATURE - LOW_TEMPERATURE;
@@ -63,7 +84,7 @@ namespace logic
         //Update is called once per frame
         void Update()
         {
-            if (isGameOver == true) //note
+            if (isGameTimerStop == true) //note
             {
                 return;
             }
@@ -75,7 +96,7 @@ namespace logic
                 {
 
                     EventManager.OnGameOver?.Invoke(continentName, (int)current_temperature);
-                    isGameOver = true;
+                    isGameTimerStop = true;
                     return;
                 }
                 else

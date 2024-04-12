@@ -23,15 +23,22 @@ public class CountdownTimer : MonoBehaviour
     {
         countdownText = GetComponent<TextMeshProUGUI>(); 
         EventManager.OnGameOver?.AddListener(GameOver);
+        EventManager.OnGameWin?.AddListener(GameWon);
         EventManager.OnGameStart?.AddListener(StartGame);
-
     }
+
 
     private void StartGame(int GameTime) // listeners Handler
     {
         countdownTime = GameTime;  //takes time from game manager
         countdownInternal = countdownTime; //Initialize countdown
         isGameStarted = true;
+    }
+
+    private void GameWon()
+    {
+        countdownInternal = Time.deltaTime;
+        isGameStarted = false;
     }
 
     private void GameOver(ContinentEnum arg0, int temperatureValue)

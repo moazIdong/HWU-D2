@@ -12,8 +12,9 @@ public class PointsHandeler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        EventManager.OnUpgrade.AddListener(OnUpgrade);
-        EventManager.OnDowngrade.AddListener(OnDowngrade);
+
+        /*EventManager.OnUpgrade.AddListener(OnUpgrade);
+        EventManager.OnDowngrade.AddListener(OnDowngrade);*/
         EventManager.OnRewardTick.AddListener(OnRewardTick);
         GamePoints = DataCenter.Instance.upgradeData.StartingGamePoints;
         gamePointsText.text = GamePoints+" Points";
@@ -25,7 +26,7 @@ public class PointsHandeler : MonoBehaviour
         gamePointsText.text = GamePoints + " Points";
     }
 
-    private void OnUpgrade(ContinentEnum currentContinent, UpgradeEnum upgradeOption)
+    public void OnUpgrade(ContinentEnum currentContinent, UpgradeEnum upgradeOption)
     {
         UpgradeData.UpgradeDetails[] allOptionDetails = Array.Find(DataCenter.Instance.upgradeData.ContinentUpgradeValues, x => x.ContEnum == currentContinent).UpgDetails;
         UpgradeData.UpgradeDetails optionDetails = Array.Find(allOptionDetails, x => x.UpgradeOption == upgradeOption);
@@ -33,7 +34,7 @@ public class PointsHandeler : MonoBehaviour
         gamePointsText.text = GamePoints + " Points";
     }
 
-    private void OnDowngrade(ContinentEnum currentContinent, UpgradeEnum upgradeOption)
+    public void OnDowngrade(ContinentEnum currentContinent, UpgradeEnum upgradeOption)
     {
         UpgradeData.UpgradeDetails[] allOptionDetails = Array.Find(DataCenter.Instance.upgradeData.ContinentUpgradeValues, x => x.ContEnum == currentContinent).UpgDetails;
         UpgradeData.UpgradeDetails optionDetails = Array.Find(allOptionDetails, x => x.UpgradeOption == upgradeOption);

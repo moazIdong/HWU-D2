@@ -17,20 +17,32 @@ namespace logic
         private RewardSystem rewardSystem;
         private IconHandeler iconHandeler;
         private Dictionary<UpgradeEnum, int> continentUpgrades = new Dictionary<UpgradeEnum, int>();
-
+        public Func<ContinentEnum, Dictionary<UpgradeEnum, int>> ContinentUpgradeData;
         float timer = 0;
         float waitTime = 1;
 
         // Start is called before the first frame update
         void Start()
         {
+
             iconHandeler = GetComponentInChildren<IconHandeler>();
             rewardSystem = GetComponent<RewardSystem>();
             rewardSystem.SetContinent(continent);
             temperature = GetComponent<Temperature>();
             temperature.SetContinent(continent);
             temperatureCounter.text = temperature.current_temperature.ToString() + " °C"; //converts the current_temperature variable from float to string
+            ContinentUpgradeData = GetContinentUpgradeData;
         }
+
+        private Dictionary<UpgradeEnum, int> GetContinentUpgradeData(ContinentEnum continentEnum)
+        {
+            if(continentEnum == continent)
+            {
+                return continentUpgrades;
+            }
+            return null;
+        }
+
         internal void LosingTempEffect()
         {
             temperatureCounter.fontStyle = FontStyles.Bold;
@@ -80,7 +92,7 @@ namespace logic
             }
         }
 
-
+        // [here]
         // Update is called once per frame
         void Update()
         {
@@ -97,20 +109,12 @@ namespace logic
 
         private void ColorContinent()
         {
-            /* 
-            - low temperature = 20
-            - max temperature = 40
-            - Length of colorArray = 5
-             [] Diffrence In Temperature = (low-max) 40-20 == 20
-             [] TemperatureStep = (Diffrence In Temperature / Length Of colorArray) 20/5 == 4
-             [] currentTemperature = (25-20)/4  ((current Temperature-Low Temperature)/TemperatureStep)
-            _________________________________________________________________________________
-
-            20-24 Green 10
-            25-28 Yellow 8 
-            29-32 Light Orange 6
-            33-36 Orange 4 
-            37-40 Red 2
+            /*
+            Perfect Green 10
+            good Yellow 8 
+            average Light Orange 6
+            poor Orange 4 
+            Bad Red 2
             */
 
             int temperatureIndex = temperature.GetCurrentTemperatureIndex();

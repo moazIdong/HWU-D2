@@ -12,24 +12,27 @@ public class ContinentMenu : MonoBehaviour
     [SerializeField] private GameObject renewableMenu;
     [SerializeField] private UpgradeButtons[] upgradeButtons;
     ContinentEnum CurrentContinent;
-    // Start is called before the first frame update
-    void Start()
+    Dictionary<UpgradeEnum, int> ContinentUpgradePointer;
+    [Serializable]public class UpgradeButtons
     {
-        
+        public UpgradeEnum UpgEnum;
+        public Button CurrentButton;
+        public bool ButtonState; //true -> Upgrade \ False -> Downgrade
+        //My Natural/Renewable Upgrade Data
     }
-
-    // Update is called once per frame
-    void Update()
+    private void UpdateButtonsState()
     {
-        
-    }
-
-    internal void UpdateContinent(Continent continent)
-    {
-        CurrentContinent = continent.continent;
-        naturalMenu.SetActive(false);
-        renewableMenu.SetActive(false);
-        mainUpgradeMenu.SetActive(true);
+        if(ContinentUpgradePointer == null)
+        {
+            return;
+        }
+        for (int i = 0; i < upgradeButtons.Length; i++)
+        {
+            int upgradeCount = 0;
+            ContinentUpgradePointer.TryGetValue(upgradeButtons[i].UpgEnum, out upgradeCount);
+            upgradeButtons[i].ButtonState = (upgradeCount > 0);
+            handleButtonState(upgradeButtons[i],true);
+        }
     }
     public void OnRenewableMenuTrigger()
     {
@@ -43,48 +46,58 @@ public class ContinentMenu : MonoBehaviour
         renewableMenu.SetActive(false);
         mainUpgradeMenu.SetActive(false);
     }
+    internal void UpdateContinent(Continent continent)
+    {
+        CurrentContinent = continent.continent;
+        ContinentUpgradePointer = continent.ContinentUpgradeData(CurrentContinent);
+        UpdateButtonsState();
+        naturalMenu.SetActive(false);
+        renewableMenu.SetActive(false);
+        mainUpgradeMenu.SetActive(true);
+    }
+
+
     public void SolarPanel()
     {
         UpgradeButtons buttonInfo = Array.Find(upgradeButtons, x => x.UpgEnum == UpgradeEnum.SolarPanel);
-        handleButtonState(buttonInfo, UpgradeEnum.SolarPanel);
+        handleButtonState(buttonInfo);
         HideAllMenus();
     }
-
 
     public void HydroDam()
     {
         UpgradeButtons buttonInfo = Array.Find(upgradeButtons, x => x.UpgEnum == UpgradeEnum.HydroDam);
-        handleButtonState(buttonInfo, UpgradeEnum.HydroDam);
+        handleButtonState(buttonInfo);
         HideAllMenus();
     }
     public void WindTurbine()
     {
         UpgradeButtons buttonInfo = Array.Find(upgradeButtons, x => x.UpgEnum == UpgradeEnum.WindTurbine);
-        handleButtonState(buttonInfo, UpgradeEnum.WindTurbine);
+        handleButtonState(buttonInfo);
         HideAllMenus();
     }
     public void WasteManagment()
     {
         UpgradeButtons buttonInfo = Array.Find(upgradeButtons, x => x.UpgEnum == UpgradeEnum.WasteManagment);
-        handleButtonState(buttonInfo, UpgradeEnum.WasteManagment);
+        handleButtonState(buttonInfo);
         HideAllMenus();
     }
     public void CarbonCapture()
     {
         UpgradeButtons buttonInfo = Array.Find(upgradeButtons, x => x.UpgEnum == UpgradeEnum.CarbonCapture);
-        handleButtonState(buttonInfo, UpgradeEnum.CarbonCapture);
+        handleButtonState(buttonInfo);
         HideAllMenus();
     }
     public void Afforestation()
     {
         UpgradeButtons buttonInfo = Array.Find(upgradeButtons, x => x.UpgEnum == UpgradeEnum.Afforestation);
-        handleButtonState(buttonInfo, UpgradeEnum.Afforestation);
+        handleButtonState(buttonInfo);
         HideAllMenus();
     }
     public void GreenUrbanPlanning()
     {
         UpgradeButtons buttonInfo = Array.Find(upgradeButtons, x => x.UpgEnum == UpgradeEnum.GreenUrbanPlanning);
-        handleButtonState(buttonInfo, UpgradeEnum.GreenUrbanPlanning);
+        handleButtonState(buttonInfo);
         HideAllMenus();
     }
 
@@ -95,26 +108,25 @@ public class ContinentMenu : MonoBehaviour
         renewableMenu.SetActive(false);
         mainUpgradeMenu.SetActive(false);
     }
-    [Serializable]public class UpgradeButtons
-    {
-        public UpgradeEnum UpgEnum;
-        public Button CurrentButton;
-        public bool ButtonState; //true -> Upgrade \ False -> Downgrade
-        //My Natural/Renewable Upgrade Data
-    }
-    private void handleButtonState(UpgradeButtons buttonInfo, UpgradeEnum upgradeEnum)
+    private void handleButtonState(UpgradeButtons buttonInfo, bool skipInvoke = false)
     {
         if (buttonInfo.ButtonState)
         {
             buttonInfo.ButtonState = false;
             buttonInfo.CurrentButton.GetComponent<Image>().color = Color.red;
-            EventManager.OnUpgrade.Invoke(CurrentContinent, upgradeEnum);
+            if(skipInvoke == false)
+            {
+                EventManager.OnUpgrade.Invoke(CurrentContinent, buttonInfo.UpgEnum);
+            }
         }
         else
         {
             buttonInfo.ButtonState = true;
             buttonInfo.CurrentButton.GetComponent<Image>().color = Color.white;
-            EventManager.OnDowngrade.Invoke(CurrentContinent, upgradeEnum);
+            if(skipInvoke == false)
+            {
+                EventManager.OnDowngrade.Invoke(CurrentContinent, buttonInfo.UpgEnum);
+            }
         }
     }
 }

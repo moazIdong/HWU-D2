@@ -6,7 +6,7 @@ using System;
 
 public class RewardSystem : MonoBehaviour
 {
-    bool isGameOver = false;
+    bool isGameTimerStop = false;
     float timer = 0;
     [SerializeField]float waitTime = 5;
     private Temperature temperature;
@@ -16,11 +16,16 @@ public class RewardSystem : MonoBehaviour
     void Start()
     {
         EventManager.OnGameOver.AddListener(OnGameOver);
+        EventManager.OnGameWin.AddListener(OnGameWon);
         temperature = GetComponent<Temperature>(); //gets temperature
     }
     private void OnGameOver(ContinentEnum contient, int temperatureValue) 
     {
-        isGameOver = true;
+        isGameTimerStop = true;
+    }
+    private void OnGameWon()
+    {
+        isGameTimerStop = true;
     }
 
     internal void SetContinent(ContinentEnum continent)
@@ -28,10 +33,11 @@ public class RewardSystem : MonoBehaviour
         continentName = continent;
     }
 
+    
     // Update is called once per frame
     void Update()
     {
-        if (isGameOver == true)
+        if (isGameTimerStop == true)
         {
             return;
         }
